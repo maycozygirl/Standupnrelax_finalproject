@@ -1,0 +1,13 @@
+
+@import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
+    body { padding: 15px;
+    font-family: 'Kanit', sans-serif;
+    background-color: #c5b699;}
+
+h1{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 25px;
+}
