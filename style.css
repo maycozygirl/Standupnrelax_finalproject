@@ -3,11 +3,18 @@
     body { padding: 15px;
     font-family: 'Kanit', sans-serif;
     background-color: #c5b699;}
-
+canvas{
+    display: block;
+    margin: auto;  
+}
 h1{
     font-size: 30px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
 }
 
 h2{
     font-size: 25px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
 }
