@@ -1,8 +1,11 @@
 
 @import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
-    body { padding: 15px;
+
+body { 
+    padding: 15px;
     font-family: 'Kanit', sans-serif;
-    background-color: #c5b699;}
+    background-color: #c5b699;
+}
 canvas{
     display: block;
     margin: auto;  
