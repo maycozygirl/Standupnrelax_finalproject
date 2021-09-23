@@ -38,7 +38,7 @@
         maxPredictions = model.getTotalClasses();
 
         // Convenience function to setup a webcam
-        const width = 500;
+        const width = 300;
         const height = 300;
         const flip = true; // whether to flip the webcam
         webcam = new tmPose.Webcam(width, height, flip); // width, height, flip
@@ -55,7 +55,6 @@
             labelContainer.appendChild(document.createElement("div"));
         }
     }
-
 
     async function loop(timestamp) {
         webcam.update(); // update the webcam frame
