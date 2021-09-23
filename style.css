@@ -15,6 +15,7 @@ canvas{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 10px;
 }
 
 button{
@@ -52,12 +53,19 @@ h2{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 h3{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    margin-top: 0px;
+    margin-top: 10px;
+}
+
+h4{
+    font-size: 25px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    margin-top: 10px;
 }
