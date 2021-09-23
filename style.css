@@ -16,12 +16,12 @@ canvas{
     justify-content: center;
     align-items: center;
     height: 200px;
-    border: 3px solid green; 
 }
 
 button{
     float: left;
     border-radius: 3px;
+    font-size: 20px;
 }
 .button:hover {background-color: #3e8e41}
 .button:active {
