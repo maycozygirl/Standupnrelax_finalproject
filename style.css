@@ -28,7 +28,6 @@ button{
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    margin-top: 5px;
     cursor: pointer;
     border-radius: 3px;
 
@@ -53,4 +52,12 @@ h2{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
+    margin-bottom: 0px;
+}
+
+h3{
+    font-size: 25px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    margin-top: 0px;
 }

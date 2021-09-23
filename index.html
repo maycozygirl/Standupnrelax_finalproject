@@ -8,12 +8,12 @@
     <title>Exercise_pose</title>
 </head>
 <body>
-    
     <h1>เหนื่อยจากการทำงานใช่มั้ยยย</h1>
     <h2> มาคลายเส้นกันดีกว่า !!</h2>
     <div class="center">
         <button class ="button" type="button" onclick="init()">Start</button>
     </div>
+    <h3 id="pressbut"></h3>
 
 <div><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
@@ -28,6 +28,8 @@
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
+        document.getElementById("demo").innerHTML = "ยืนขึ้น ยืดแขนไปข้างหน้า แล้วยกขึ้น !!";
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
@@ -38,10 +40,10 @@
         maxPredictions = model.getTotalClasses();
 
         // Convenience function to setup a webcam
-        const size = 400;
-        const height = 200;
+        const size = 900;
+        const height = 500;
         const flip = true; // whether to flip the webcam
-        webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+        webcam = new tmPose.Webcam(size, height, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
