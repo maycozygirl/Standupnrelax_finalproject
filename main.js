@@ -61,7 +61,7 @@ type="text/javascript"
             if (status == "up"){
                 num = count++
                 document.getElementById("count").innerHTML = num;
-                if(num == 10){
+                if(num = 10){
                     document.getElementById("count").innerHTML = "เก่งมากก ฮึบ ๆ สู้ไปให้ถึง 50 ครั้งกันน !";
                 }
             }
