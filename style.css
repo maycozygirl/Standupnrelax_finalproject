@@ -1,4 +1,3 @@
-
 @import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
 
 body { 
@@ -31,7 +30,7 @@ button{
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Kanit', sans-serif;
-    margin-top: 80px;
+    margin-top: 30px;
 
 }
 .button:hover {
@@ -54,14 +53,13 @@ h2{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    margin-top: 20px;
 }
 
 h3{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    margin-top: 90px;
+    margin-top: 30px;
 }
 
 h4{
@@ -69,5 +67,3 @@ h4{
     font-family: 'Kanit', sans-serif;
     text-align: center;
 }
-
-
