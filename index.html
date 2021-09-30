@@ -30,7 +30,7 @@
 
     async function init() {
         document.getElementById("pressbut").innerHTML = "ยืนขึ้น ยืดแขนไปข้างหน้า ประสานมือ  แล้วยกขึ้น !!";
-        document.getElementById("count").innerHTML = num;
+    
 
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
@@ -68,6 +68,7 @@
 
     var status = "set"
     var count = 0
+    document.getElementById("count").innerHTML = num;
 
     async function predict() {
         // Prediction #1: run input through posenet
