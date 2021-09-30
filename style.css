@@ -69,3 +69,10 @@ h4{
     font-family: 'Kanit', sans-serif;
     text-align: center;
 }
+
+h4{
+    font-size: 25px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
