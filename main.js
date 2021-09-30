@@ -63,13 +63,12 @@ type = "text/javascript"
                 num = count++
                 document.getElementById("count").innerHTML = num;
             }
+            if(num = 10){
+                document.getElementById("cheerup").innerHTML = "ฮึบ ๆ เป็นไงบ้างง สบายตัวมั้ยย";
+            }
             status = "set"
         }else if (prediction[1].probability.toFixed(2) == 1.00) {
             status = "up"
-        }
-
-        if(num = 10){
-            document.getElementById("cheerup").innerHTML = "ฮึบ ๆ เป็นไงบ้างง สบายตัวมั้ยย";
         }
 
 
