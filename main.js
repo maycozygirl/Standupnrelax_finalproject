@@ -49,7 +49,7 @@ type = "text/javascript"
 
     var status = "set"
     var count = 0
-    var num = 0
+    var num =0
 
     async function predict() {
         // Prediction #1: run input through posenet
@@ -62,9 +62,6 @@ type = "text/javascript"
             if (status == "up"){
                 num = count++
                 document.getElementById("count").innerHTML = num;
-            }
-            if(num = 10){
-                document.getElementById("cheerup").innerHTML = "ฮึบ ๆ เป็นไงบ้างง สบายตัวมั้ยย";
             }
             status = "set"
         }else if (prediction[1].probability.toFixed(2) == 1.00) {
