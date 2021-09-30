@@ -49,7 +49,6 @@ type = "text/javascript"
 
     var status = "set"
     var count = 0
-    var num =0
 
     async function predict() {
         // Prediction #1: run input through posenet
