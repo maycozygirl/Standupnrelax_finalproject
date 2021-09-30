@@ -10,16 +10,23 @@
 <body>
     <h1>เหนื่อยจากการทำงานใช่มั้ยยย</h1>
     <h2> มาคลายเส้นกันดีกว่า !!</h2>
+    <h5>!! อย่าลืมเชื่อต่อกับอุปกรณ์  !!</h5>
     <div class="center">
         <button class ="button" type="button" onclick="init()">Start</button>
     </div>
     <h3 id="pressbut"></h3>
-    <h4 id="count"></h4>
 
     <div><canvas id="canvas"></canvas></div>
     <div id="label-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"
+      integrity="sha512-Y5n0fbohPllOQ21fTwM/h9sQQ/1a1h5KhweGhu2zwD8lAoJnTgVa7NIrFa1bRDIMQHixtyuRV2ubIx+qWbGdDA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="mqttws31.js"></script>
     <script type="text/javascript">
         // More API functions here:
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -35,8 +42,8 @@
             mqtt_server: "soldier.cloudmqtt.com",
             mqtt_websockets_port: 30174,
             mqtt_user: "brdhfcif",
-            mqtt_password: "gviTCGqRHgB9"
-        };
+            mqtt_password: "gviTCGqRHgB9",
+            };
 
         client = new Paho.MQTT.Client(
             config.mqtt_server,
@@ -49,12 +56,13 @@
             userName: config.mqtt_user,
             password: config.mqtt_password,
             onSuccess: function() {
-            $("#status").text("Connected").removeClass().addClass("connected");
+            // $("#status").text("Connected").removeClass().addClass("connected");
             client.subscribe("/may");
             mqttSend("/may", "Connected");
         },
         onFailure: function(e) {
-            $("#status").text("Error : " + e).removeClass().addClass("error");
+            console.log(e)
+            // $("#status").text("Error : " + e).removeClass().addClass("error");
         }
         });
         client.onConnectionLost = function (responseObject) {
@@ -123,6 +131,18 @@
                 if (status == "up"){
                     num = count++
                     document.getElementById("count").innerHTML = num;
+                    if (num == 10){
+                    document.getElementById("pressbut").innerHTML = "เก่งมาก สู้ ๆ ฮึบ ";
+                    }
+                    if (num == 20){
+                    document.getElementById("pressbut").innerHTML = "เป็นไงบ้างสบายขึ้นมั้ย !!";
+                    }
+                    if (num == 25){
+                    document.getElementById("pressbut").innerHTML = "ถ้ารู้สึกไม่ไหวแล้วพักก่อนก็ได้นะ พวกเรารอช่วยยืดเสมอนะ";
+                    }
+                    if (num == 40){
+                    document.getElementById("pressbut").innerHTML = " เก่งมาก ๆ เลยย ถ้าเหนื่อยล้าจากการทำงาน ลองพักบ้างนะ";
+                    }
                 }
                 if (lightOn == 0){
                     lightOff = 0;
@@ -137,7 +157,7 @@
                 if (lightOff == 0){
                     lightOn = 0;
                     mqttSend("/may","relay1_off")
-                    lightOn = 1;
+                    lightOff = 1;
                 }
                 status = "up"
             }
@@ -159,6 +179,8 @@
             }
         }
     </script>
+
+    <h4 id="count"></h4>
 
 </body>
 </html>

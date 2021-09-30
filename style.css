@@ -30,7 +30,7 @@ button{
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Kanit', sans-serif;
-    margin-top: 30px;
+    margin-top: 60px;
 
 }
 .button:hover {
@@ -59,11 +59,17 @@ h3{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 80px;
 }
 
 h4{
     font-size: 25px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
+}
+h5{
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    margin-top: 10px;
 }
