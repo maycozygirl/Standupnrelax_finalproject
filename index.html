@@ -28,6 +28,48 @@
         const URL = "./my_model/";
         let model, webcam, ctx, labelContainer, maxPredictions;
 
+        let lightOn = 0;
+        let lightOff = 0;
+
+        let config = {
+        mqtt_server: "soldier.cloudmqtt.com",
+        mqtt_websockets_port: 30174,
+        mqtt_user: "brdhfcif",
+        mqtt_password: "gviTCGqRHgB9"
+        };
+
+        client = new Paho.MQTT.Client(
+            config.mqtt_server,
+            config.mqtt_websockets_port,
+            "web_" + parseInt(Math.random() * 100, 10)
+        );  
+
+        client.connect({
+            useSSL: true,
+            userName: config.mqtt_user,
+            password: config.mqtt_password,
+            onSuccess: function() {
+            $("#status").text("Connected").removeClass().addClass("connected");
+            client.subscribe("/may");
+            mqttSend("/may", "Connected");
+        },
+        onFailure: function(e) {
+            $("#status").text("Error : " + e).removeClass().addClass("error");
+        }
+        });
+        client.onConnectionLost = function (responseObject) {
+            if (responseObject.errorCode !== 0) {
+                setTimeout(function () {
+                client.connect();
+            }, 1000);
+            }
+        };
+        function mqttSend(topic, msg) {
+            let message = new Paho.MQTT.Message(msg);
+            message.destinationName = topic;
+            client.send(message);
+        }
+
         async function init() {
             document.getElementById("pressbut").innerHTML = "ยืนขึ้น ประสานมือ ยืดแขนไปข้างหน้า แล้วยกขึ้น !!";
 
@@ -41,8 +83,8 @@
             maxPredictions = model.getTotalClasses();
 
             // Convenience function to setup a webcam
-            const size = 300;
-            const height = 300;
+            const size = 640;
+            const height = 480;
             const flip = true; // whether to flip the webcam
             webcam = new tmPose.Webcam(size, height, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam
@@ -58,6 +100,8 @@
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
+
+        init();
 
         async function loop(timestamp) {
             webcam.update(); // update the webcam frame
@@ -75,13 +119,27 @@
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
 
+            //Turn on
             if (prediction[0].probability.toFixed(2) == 1.00){
                 if (status == "up"){
                     num = count++
                     document.getElementById("count").innerHTML = num;
                 }
+                if (lightOn == 0){
+                    lightOff = 0;
+                    mqttSend("/may","relay1_on")
+                    lightOn = 1;
+                }
                 status = "set"
-            }else if (prediction[1].probability.toFixed(2) == 1.00) {
+            }
+
+            //Turn off
+            if (prediction[1].probability.toFixed(2) == 1.00){
+                if (lightOff == 0){
+                    lightOn = 0;
+                    mqttSend("/may","relay1_off")
+                    lightOn = 1;
+                }
                 status = "up"
             }
 
