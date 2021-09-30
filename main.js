@@ -9,7 +9,7 @@ type="text/javascript"
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
-        document.getElementById("pressbut").innerHTML = "ยืนขึ้น ยืดแขนไปข้างหน้า ประสานมือ  แล้วยกขึ้น !!";
+        document.getElementById("pressbut").innerHTML = "ยืนขึ้น ยืดแขนไปข้างหน้า ประสานมือ แล้วยกขึ้น !!";
     
 
         const modelURL = URL + "model.json";
@@ -49,7 +49,6 @@ type="text/javascript"
     var status = "set"
     var count = 0
    
-
     async function predict() {
         // Prediction #1: run input through posenet
         // estimatePose can take in an image, video or canvas html element
